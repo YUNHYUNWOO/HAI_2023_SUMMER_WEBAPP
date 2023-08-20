@@ -74,20 +74,20 @@ export function Join(){
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input onChange = {handlePwdInput} type="text" placeholder="password" className="input input-bordered" />
+                                <input onChange = {handlePwdInput} type="password" placeholder="password" className="input input-bordered" />
                                 
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password 확인</span>
                                 </label>
-                                <input onChange = {handlePwdChkInput} type="text" placeholder="password 확인" className="input input-bordered" />
+                                <input onChange = {handlePwdChkInput} type="password" placeholder="password 확인" className="input input-bordered" />
                                 <label className="label">
                                     <a href="http://localhost:3000/login" className="label-text-alt link link-hover">로그인 하러가기</a>
                                 </label>
                             </div>
                             <div className="mt-6 form-control">
-                                <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
+                                <button className="btn btn-primary" onClick={handleSubmit}>Join</button>
                             </div>
                         </div>
                     </div>

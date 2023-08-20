@@ -30,8 +30,11 @@ const ItemInfo = () => {
             const content = res.data.content.substring(textArr.length + 1);
             setTitle(textArr);
             setContent(content); 
+            location.state.title = textArr;
+            location.state.content = content;
+            console.log(textArr);
             if(user != null)
-                return axios.put(`http://localhost:80/users/${user?.id}/history/${location.state._id}`, {title, content});
+                return axios.put(`http://localhost:80/users/${user?.id}/history/${location.state._id}`, {title: textArr,content: content});
         });
     }, [user]);
 

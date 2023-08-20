@@ -18,6 +18,7 @@ function MainPage(){
   const [ocrText, setOcrText] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>('');
+  const [_id, set_id] = useState<string>('');
   const [user, setUser] = useState<User | null>(null);
 
   const [fileURL, setFileURL] = useState<string>("");
@@ -33,10 +34,11 @@ function MainPage(){
 
   useEffect(() => {
 
-    if(title !== '' && content !== '' && !isSending){
+    if(title !== '' && content !== '' && !isSending && _id !== ''){
       const props = {
         //  id : 
         //  userId : ,
+        _id : _id,
         images : [fileURL],
         ocrTexts : [ocrText],
         title : title,
@@ -49,7 +51,7 @@ function MainPage(){
         {state : props}
         );
     }
-  }, [title, content, isSending]);
+  }, [title, content, isSending, _id]);
 
   const handleFileChange = useCallback(async (filesParam : File[]) => {
     
@@ -105,6 +107,7 @@ function MainPage(){
       setTitle(title);
       const content = summarizedTextTemp.substring(title.length + 1);
       setContent(content);
+      
       console.log(summarizedTextTemp);
       console.log(ocrTextTemp);
       if(user != null)
@@ -116,6 +119,7 @@ function MainPage(){
       });
     })
     .then(function(res) {
+      set_id(res?.data);
       setIsSending(false);
     });
     

@@ -50,9 +50,10 @@ router.post('/', async function(req, res, next){
     try{
         const usersDB = client.db("users");
         const history = usersDB.collection("history");
+        const insertedId = new ObjectId();
         console.log(req.body);
         const query = { 
-            _id : new ObjectId(),
+            _id : insertedId,
             userId : req.params.userId,
             timestamp : getCurrentDate(),
             images : req.body.images,
@@ -62,7 +63,7 @@ router.post('/', async function(req, res, next){
         console.log(query);
         const result = await history.insertOne(query);
         console.log(result);
-        res.status(200).send("Succeed");
+        res.status(200).send(insertedId.toString());
     }   
     catch{
     res.status(500).send("Unexpected Error");
@@ -74,6 +75,7 @@ router.put('/:_id', (req, res, next)=>{
     const _id = new ObjectId(req.params._id);
     const usersDB = client.db("users");
     const history = usersDB.collection("history");
+    console.log(req.params._id);
     const filterQuery = { 
             _id : _id
         }; 
@@ -83,7 +85,7 @@ router.put('/:_id', (req, res, next)=>{
         }
     };
     history.updateOne(filterQuery, Query)
-    .then((result)=>{
+    .then((result)=>{   
         console.log(result);
         res.status(200).send("Succeed");
     })
