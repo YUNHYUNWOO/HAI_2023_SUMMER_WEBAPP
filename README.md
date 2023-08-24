@@ -45,7 +45,7 @@
 ![261868133-adfd600e-90c9-4a8a-9972-ff543aa28dfa](https://github.com/YUNHYUNWOO/HAI_2023_SUMMER_WEBAPP/assets/122684695/b84af4ee-f145-483e-9823-994d75a24eda)
 
 - Crypto module을 이용한 단방향 암호화를 통해 비밀번호를 암호화했습니다.
-  Digest와 salt를 이용하여 안정성을 강화했습니다.
+  pbkdf2를 이용하여 안정성을 강화했습니다.
 - localstorage에 user 정보를 저장하는 방식으로 브라우저의 상태를 관리했습니다.
   더 다양한 상태를 관리하기 위해선 방식을 변화할 필요가 있습니다.
 
